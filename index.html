@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Tenali+Ramakrishna&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <button id="game-start" class="btn" onclick="startTheGame()">Start The Game!</button>
+        <div class="container_info"></div>
+        <div class="container-win"></div>
+        <div class="container_game-over">
+            <h3>No tile left on the stock.</h3>
+            <h4>Game Over</h4>
+            <button id="restart" onclick="window.location.reload();">Restart</button>
+        </div>
+        <div class="container_question">
+            <h3>Where would you like to place it?</h3>
+            <input type="button" id="left" onclick="clicked_btn()" value="Left" />
+            <input type="button" id="right" onclick="clicked_btn()" value="Right" />
+        </div>
+        <div class="tiles">
+            <ul id="player1" onclick="getTileValue(event);"></ul>
+            <div class="board board--display-none" id="board"></div>
+            <ul id="player2" onclick="getTileValue(event);"></ul>
+        </div>
+
+    </div>
+    <script src="./domino.js"></script>
+</body>
+
+</html>
