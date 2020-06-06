@@ -15,10 +15,10 @@ function generateStock() {
     "root",
     "stock",
     `Stock ${stock.length}`,
-    "stock"
+    "stockId"
   );
 
-  const st = document.getElementById("stock");
+  const st = document.getElementById("stockId");
   st.addEventListener("click", () => drawATile());
 }
 
@@ -91,7 +91,7 @@ function updateList(list, player) {
 }
 
 function updateStock() {
-  const stockBlock = document.getElementById("stock");
+  const stockBlock = document.getElementById("stockId");
   stockBlock.innerText = `Stock ${stock.length}`;
 }
 
@@ -109,7 +109,7 @@ function drawATile() {
     displayTemporaryElement("Draw again", "alert_danger");
   } else {
     displayTemporaryElement("You can play now.", "alert_success");
-    isButtonDisabled("stock", true);
+    isButtonDisabled("stockId", true);
   }
 
   updateStock(`Stock ${stock.length}`);
@@ -127,7 +127,7 @@ function startTheGame() {
   shuffleTiles();
   distributeDominoes();
   isButtonDisabled("game-start", true);
-  isButtonDisabled("stock", true);
+  isButtonDisabled("stockId", true);
 
   const initialTile = stock.shift();
   gamingBoard.unshift(initialTile);
@@ -156,7 +156,7 @@ function gamePlay(player, board, selectedTile, inx) {
         `${player.name} can't play. They will draw a tile`,
         "alert_danger"
       );
-      isButtonDisabled("stock", false);
+      isButtonDisabled("stockId", false);
       return;
     } else {
       const gameOver = document.querySelector(".container_game-over");
@@ -192,31 +192,17 @@ function gamePlay(player, board, selectedTile, inx) {
   }
 
   if (selectedTile[0] === board[0] && selectedTile[0] === board[1]) {
-    gamingBoard.push(selectedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    pushTile(player, selectedTile, inx, false);
   } else if (selectedTile[1] === board[0] && selectedTile[1] === board[1]) {
-    gamingBoard.unshift(selectedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    unshiftTile(player, selectedTile, inx, false);
   } else if (selectedTile[0] === board[0] && selectedTile[0] !== board[1]) {
-    const reversedTile = selectedTile.reverse();
-    gamingBoard.unshift(reversedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    unshiftTile(player, selectedTile, inx, true);
   } else if (selectedTile[0] === board[1] && selectedTile[0] !== board[0]) {
-    gamingBoard.push(selectedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    pushTile(player, selectedTile, inx, false);
   } else if (selectedTile[1] === board[0] && selectedTile[1] !== board[1]) {
-    gamingBoard.unshift(selectedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    unshiftTile(player, selectedTile, inx, false);
   } else if (selectedTile[1] === board[1] && selectedTile[1] !== board[0]) {
-    const reversedTile = selectedTile.reverse();
-    gamingBoard.push(reversedTile);
-    player.hand.splice(inx, 1);
-    updateList(player.name, player);
+    pushTile(player, selectedTile, inx, true);
   }
 
   const boardItems = gamingBoard.map((item) => {
@@ -297,4 +283,25 @@ function displayTemporaryElement(text, alertType) {
 
 function isButtonDisabled(id, bool) {
   document.getElementById(id).disabled = bool;
+}
+
+function pushTile(player, tile, index, reverse) {
+  if (reverse) {
+    tile.reverse();
+  }
+
+  player.hand.splice(index, 1);
+  gamingBoard.push(tile);
+
+  updateList(player.name, player);
+}
+
+function unshiftTile(player, tile, index, reverse) {
+  if (reverse) {
+    tile.reverse();
+  }
+  player.hand.splice(index, 1);
+  gamingBoard.unshift(tile);
+
+  updateList(player.name, player);
 }
