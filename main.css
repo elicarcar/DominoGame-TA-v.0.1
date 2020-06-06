@@ -7,11 +7,6 @@ body {
   font-family: "Tenali Ramakrishna", sans-serif;
 }
 
-.header {
-  text-align: center;
-  font-size: 2rem;
-}
-
 .btn {
   cursor: pointer;
   margin: 10px;
@@ -138,7 +133,7 @@ body {
   top: 30%;
   right: 50%;
   transform: translate(50%, -50%);
-  /* display: none; */
+  display: none;
 }
 
 .container-win {
