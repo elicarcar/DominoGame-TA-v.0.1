@@ -128,15 +128,17 @@ body {
 }
 
 .container_game-over {
+  background: yellow;
+  width: 80%;
+  padding: 10px;
+  border: 2px solid black;
+  color: black;
+  text-align: center;
   position: absolute;
   top: 30%;
   right: 50%;
   transform: translate(50%, -50%);
-  background: yellow;
-  color: black;
-  text-align: center;
-  padding: 10px;
-  display: none;
+  /* display: none; */
 }
 
 .container-win {
