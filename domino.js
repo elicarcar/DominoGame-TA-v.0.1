@@ -218,7 +218,7 @@ function gamePlay(player, board, selectedTile, inx) {
     const restartButton = document.getElementById("restart-win");
     const h4 = document.createElement("h4");
     h4.innerText = `${player.name} wins the game!`;
-    restartButton.insertAdjacentElement("beforeend", h4);
+    restartButton.insertAdjacentElement("beforebegin", h4);
     const gameOver = document.querySelector(".container-win");
     gameOver.style.display = "block";
   }
