@@ -11,23 +11,23 @@
 
 <body>
     <div id="root">
+        <!-- <h2 class="header">Dominoes Game</h2> -->
         <button id="game-start" class="btn" onclick="startTheGame()">Start The Game!</button>
         <div class="container_info"></div>
-        <div class="container-win"></div>
+        <div class="container-win">
+            <h3>Game Over!</h3>
+            <button id="restart-win" onclick="window.location.reload();">Restart</button>
+        </div>
         <div class="container_game-over">
             <h3>No tile left on the stock.</h3>
             <h4>Game Over</h4>
             <button id="restart" onclick="window.location.reload();">Restart</button>
         </div>
-        <div class="container_question">
-            <h3>Where would you like to place it?</h3>
-            <input type="button" id="left" onclick="clicked_btn()" value="Left" />
-            <input type="button" id="right" onclick="clicked_btn()" value="Right" />
-        </div>
         <div class="tiles">
-            <ul id="player1" onclick="getTileValue(event);"></ul>
-            <div class="board board--display-none" id="board"></div>
-            <ul id="player2" onclick="getTileValue(event);"></ul>
+            <ul id="player1" onclick="playerStartsToPlay(event);">
+            </ul>
+            <div class="board board_display-none" id="board"></div>
+            <ul id="player2" onclick="playerStartsToPlay(event);"></ul>
         </div>
 
     </div>

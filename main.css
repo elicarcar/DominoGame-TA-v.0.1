@@ -1,10 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Tenali Ramakrishna", sans-serif;
 }
 
+.header {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .btn {
   cursor: pointer;
+  margin: 10px;
   padding: 10px;
+  background: rgb(155, 252, 171);
+  outline: thin;
+  color: white;
+  text-shadow: 1px 1px 1px #474545;
+  border-radius: 5px;
 }
 
 .btn--disabled {
@@ -12,25 +28,30 @@ body {
 }
 
 .board {
-  background: rgb(18, 92, 98);
+  background: rgb(56, 63, 54);
   margin: 15px;
   width: 80%;
   height: 400px;
-  overflow: scroll;
+  border: 12px groove rgb(54, 207, 136);
+  border-radius: 10px;
+  letter-spacing: 1.5pt;
+  font-size: 1.3rem;
+  overflow-y: auto;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
-.board--game-process {
+.board_game-process {
   color: white;
   padding: 2px;
-  margin: 15px 10px 0px 5px;
-  line-height: 2.5px;
+  margin: 0px 10px 0px 5px;
 }
 
-.board--display-none {
+.board_display-none {
   display: none;
 }
 
-.list--visibility > li {
+.list_visibility > li {
   pointer-events: none;
   color: white;
 }
@@ -45,9 +66,10 @@ body {
   list-style: none;
   margin: 0;
   padding: 0px;
+  align-self: center;
 }
 
-.tiles ul > li {
+.tile-items {
   cursor: pointer;
   margin: 2px;
   padding: 10px;
@@ -60,48 +82,51 @@ body {
 }
 
 .stock {
+  margin: 5px;
+  padding: 10px;
   position: absolute;
   top: 0px;
   right: 12px;
   cursor: pointer;
-  padding: 10px;
-  border: 1px solid blue;
-  color: blue;
+  border: 3px solid red;
+  border-radius: 5px;
+  color: rgb(24, 24, 44);
+  font-weight: 600;
 }
 
-.alert--info,
-.alert_danger {
+.container_info {
+  display: flex;
+  flex-direction: column;
+  height: 50px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.container_info > div {
+  text-align: center;
+  width: 80%;
   margin: 10px;
+  color: white;
+  border-radius: 10px;
+  text-shadow: 1px 1px rgb(46, 45, 45);
+}
+
+.alert--info {
   background-color: rgb(71, 168, 245);
-  transition: all 0.5s;
 }
 
 .alert_danger {
   background-color: red;
   border: 1.5px solid rgb(241, 39, 39);
-  border-radius: 10px;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 2rem;
 }
 
 .alert_success {
   background-color: rgb(0, 255, 98);
   border: 1.5px solid rgb(87, 243, 113);
-  border-radius: 10px;
-  color: white;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  font-size: 2rem;
 }
 
-.container--info {
-  height: 50px;
-}
-
-.container_question,
 .container_game-over {
   position: absolute;
   top: 30%;
@@ -115,23 +140,24 @@ body {
 }
 
 .container-win {
-  background: linear-gradient(purple, green);
+  background: linear-gradient(rgb(231, 115, 7), rgb(235, 127, 65));
   position: absolute;
-  top: 30%;
+  top: 50%;
   right: 50%;
-  width: 75%;
-  height: 50vh;
   transform: translate(50%, -50%);
-  border: 3px dotted red;
+  width: 98vw;
+  height: 99vh;
   border-radius: 15px;
   text-align: center;
   font-size: 4rem;
   color: black;
-  padding: 10px;
+  z-index: 2;
   display: none;
 }
 
-/* .play-not-allowed {
-  color: white;
-  cursor: none;
-} */
+.container-win > button {
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 20px;
+  border-radius: 5px;
+}
